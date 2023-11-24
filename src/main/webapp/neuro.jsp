@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Gastro Forms</title>
+    <title>Neuro Forms</title>
 </head>
 <body>
     <header>
@@ -29,7 +29,7 @@
 			class="flex  justify-center mt-[5%] ml-[32%] border rounded-md w-[32vw] h-[56vh]">
 			 
 			<form action="receber-respostas" class="mt-5" method="post">
-				<input type="hidden" value="1" name="especialidade"> <label
+				<input type="hidden" value="3" name="especialidade"> <label
 					for="group1">1. Você consegue sorrir normalmente? </label>
 				<fieldset id="group1" name="group1" class="flex flex-row gap-4">
 					<input type="radio" value="1" name="p1">Sim 

@@ -45,10 +45,14 @@ p4 int,
 p5 int,
 id_especialidade number,
 status number,
-data date);
+data date,
+id_sugestao number);
+
 alter table pesquisa add foreign key (id_usuario) references usuarios(id);
 alter table pesquisa add foreign key(status) references status_pesquisa(id);
 alter table pesquisa add foreign key (id_especialidade) references especialidades(id);
+alter table pesquisa add foreign key (id_sugestao) references sugestao(id);
+
 
 create table consulta(
 id int GENERATED ALWAYS AS IDENTITY primary key,
@@ -77,3 +81,7 @@ id_especialidade number,
 nota number);
 
 alter table avaliacao add foreign key (id_especialidade) references especialidades(id);
+
+create table sugestao (
+id number primary key,
+descricao varchar2(200));

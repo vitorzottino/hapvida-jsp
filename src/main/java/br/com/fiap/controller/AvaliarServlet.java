@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.fiap.connection.ConnectionFactory;
+import br.com.fiap.dao.AvaliacaoDAO;
 import br.com.fiap.model.Avaliacao;
 
 @WebServlet("/avaliar")
@@ -27,6 +29,9 @@ public class AvaliarServlet extends HttpServlet {
 		Avaliacao ava = new Avaliacao();
 		ava.setIdEspecialidade(idEspecialidade);
 		ava.setNota(nota);
+		AvaliacaoDAO dao = new AvaliacaoDAO(ConnectionFactory.conectar());
+		dao.inserirAvaliacao(ava);
+		response.sendRedirect("pacientedashboard.jsp");
 	}
 
 

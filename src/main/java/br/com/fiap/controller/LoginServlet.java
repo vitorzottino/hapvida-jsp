@@ -24,12 +24,14 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		response.sendRedirect("index.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		request.getSession().setAttribute("user", null);
 		Usuario user = (Usuario) request.getSession().getAttribute("user");
 		if (user == null) {
 			try (PrintWriter out = response.getWriter()) {

@@ -1,48 +1,31 @@
 package br.com.fiap.model;
 
-import br.com.fiap.connection.ConnectionFactory;
-import br.com.fiap.dao.UsuarioDAO;
-
 public class RegrasNegocio {
-	
-	
-	
-	
-	//Criar uma tabela de SUGESTOES e o retorno deste metodo SERA O ID DE UMA SUGESTAO;
+
+	// Criar uma tabela de SUGESTOES e o retorno deste metodo SERA O ID DE UMA
+	// SUGESTAO;
 	public int analisarPesquisa(Pesquisa pesquisa) {
-		
+
 		int C1 = pesquisa.idEspecialidade;
-		UsuarioDAO dao = new UsuarioDAO(ConnectionFactory.conectar());
-		Usuario user = dao.userID(pesquisa.getIdUsuario());
-		int C2 = user.getIdade();
+		// UsuarioDAO dao = new UsuarioDAO(ConnectionFactory.conectar());
+		// Usuario user = dao.userID(pesquisa.getIdUsuario());
+		// int C2 = user.getIdade();
 		int C3 = pesquisa.p1;
 		int C4 = pesquisa.p2;
 		int C5 = pesquisa.p3;
 		int C6 = pesquisa.p4;
 		int C7 = pesquisa.p5;
-		
-		switch(C1) {
-		case 1:
-			//CASO FOR ORTOPEDIA
-			if(C2 > 60) {
-				//PACIENTE IDOSO
-				 
-			}
-			
-			break;
-		case 2:
-			//CASO FOR CARDIOLOGIA
-			break;
-		case 3:
-			//CASO FOR GASTRO
-			break;
-			
+		int retorno = 0;
+
+		if (C1 == 1 && C3 == 1 && C4 >= 3 && C5 == 0 && C6 == 0 && C7 >= 4) {
+			retorno = 1;
+
+		}
+		if (C1 == 1 && C3 == 0 && C4 == 2 && C5 == 0 && C6 == 1 && C7 == 1) {
+			retorno = 2;
 		}
 		
-	
-	
-	return 1;
+		return retorno;
 	}
-	
 
 }

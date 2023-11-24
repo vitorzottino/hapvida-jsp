@@ -45,35 +45,35 @@
         <div class="flex mt-[2%]  justify-center items-center gap-8 flex-col rounded-md border p-6 w-[88%]">
             <h1 class="text-2xl font-semibold italic">Olá ${user.getNome() }</h1>
             <h2 class="text-2xl font-semibold italic">Essas são suas proximas consultas</h2>
-            <div class="flex flex-row gap-8">
-                <table class="table table-light">
-			<thead>
-				<tr>
-					<th scope="col">Especialidade</th>
-					<th scope="col">Data(AAAA-MM-DD)</th>
-					<th scope="col">Horario</th>
-				</tr>
-			</thead>
-			<tbody>
-				<%
-				if (consultas != null) {
-					for (Consulta c : consultas) {
-				%>
-				<tr>
-					<td><%=c.getEspecialidade()%></td>
-					<td><%=c.getData()%></td>
-					<td><%=c.getHorario()%></td>
-					
-				</tr>
+            <div class="flex justify-center items-center mt-[2%] rounded-lg border shadow-lg w-[88%] relative  overflow-x-auto">
+                <table class="w-full">
+            <thead class="bg-orange-400 w-full text-white">
+                <tr>
+                    <th class="px-6 py-3 scope="col">Especialidade</th>
+                    <th class="px-6 py-3 scope="col">Data(AAAA-MM-DD)</th>
+                    <th class="px-6 py-3 scope="col">Horario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                if (consultas != null) {
+                    for (Consulta c : consultas) {
+                %>
+                <tr class="border-b-orange-200 border-b">
+                    <td><%=c.getEspecialidade()%></td>
+                    <td><%=c.getData()%></td>
+                    <td><%=c.getHorario()%></td>
 
-				<%
-				}
-				}
-				%>
+                </tr>
 
-			</tbody>
-		</table>
-                
+                <%
+                }
+                }
+                %>
+
+            </tbody>
+        </table>
+
             </div>
         </div>
        

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import br.com.fiap.connection.ConnectionFactory;
 import br.com.fiap.model.Avaliacao;
-import br.com.fiap.model.Consulta;
+
 
 public class AvaliacaoDAO {
 	private Connection con;

@@ -159,5 +159,35 @@ public class PesquisaDAO {
 		}
 		return pesquisa;
 	}
+	
+	public void assinarPesquisa(int id) {
+
+		try {
+			String sql = "UPDATE pesquisa SET status 1 WHERE id=?";
+			PreparedStatement stmt = this.con.prepareStatement(sql);
+			stmt.setInt(1, id);
+			stmt.execute();
+			stmt.close();
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void deletarPesquisa(int id) {
+		try {
+			String sql = "DELETE FROM pesquisa WHERE id=?";
+			PreparedStatement stmt = this.con.prepareStatement(sql);
+			stmt.setInt(1, id);
+			stmt.execute();
+			stmt.close();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

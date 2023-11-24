@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.connection.ConnectionFactory;
-import br.com.fiap.model.Consulta;
 import br.com.fiap.model.DadosBiometricos;
 
 public class DadosBiometricosDAO {

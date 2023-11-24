@@ -1,4 +1,4 @@
-package br.com.fiap.dao;
+package br.com.fiap.controller;
 
 import java.io.IOException;
 
@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.fiap.connection.ConnectionFactory;
+import br.com.fiap.dao.PesquisaDAO;
+import br.com.fiap.dao.SugestaoDAO;
 import br.com.fiap.model.Pesquisa;
+import br.com.fiap.model.RegrasNegocio;
 
 @WebServlet("/ver-resultados")
 public class VerResultadosServlet extends HttpServlet {
@@ -25,6 +28,10 @@ public class VerResultadosServlet extends HttpServlet {
 
 		int id = Integer.parseInt(request.getParameter("id"));
 		Pesquisa pesquisa = new PesquisaDAO(ConnectionFactory.conectar()).listarPesquisasId(id);
+		SugestaoDAO sugestaoDAO = new SugestaoDAO(ConnectionFactory.conectar());
+		RegrasNegocio regra = new RegrasNegocio();
+		String sugestao = sugestaoDAO.getSugestao(regra.analisarPesquisa(pesquisa));
+		
 		System.out.println(pesquisa.getIdEspecialidade());
 		switch (pesquisa.getIdEspecialidade()) {
 		case 1:// Ortopedista
@@ -137,9 +144,10 @@ public class VerResultadosServlet extends HttpServlet {
 		request.setAttribute("resposta3", resposta3);
 		request.setAttribute("resposta4", resposta4);
 		request.setAttribute("resposta5", resposta5);
+		request.setAttribute("sugestao", sugestao);
 		request.setAttribute("id", id);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("visualizarautoatendimento.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("assinarautoatendimento.jsp");
 		dispatcher.forward(request, response);
 
 	}
